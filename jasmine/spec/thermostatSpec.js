@@ -2,7 +2,6 @@ describe('Thermostat', function() {
 
   beforeEach(function() {
     thermostat = new Thermostat;
-    // powersaving = on;
   });
 
   it('checks current temperature output 20', function(){
@@ -30,5 +29,14 @@ describe('Thermostat', function() {
     expect(function() {thermostat.increaseTemp()}).toThrowError('The temp cannot be increased due to PS mode ON')
   });
 
+  it('checks when power saving mode is off, the temp can be increased up to 32 degrees', function(){
+    thermostat.temperature = 32
+    thermostat.powerSaving('off')
+    expect(function() {thermostat.increaseTemp()}).toThrowError('The temp cannot be increased more than 32 degrees while PS mode OFF')
+  });
+
+  it('check power saving is on by default', function(){
+    expect(thermostat.powersaving).toEqual(true)
+  });
 
 });
