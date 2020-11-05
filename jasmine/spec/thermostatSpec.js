@@ -56,6 +56,7 @@ describe('Thermostat', function() {
   });
 
   it('energy usage is higher than 25', function () {
+    thermostat.powerSaveOff();
     thermostat.increaseTemp(6);
     expect(thermostat.usage()).toEqual('high-usage');
   });
