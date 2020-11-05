@@ -8,7 +8,7 @@ class Thermostat{
   increaseTemp( num = 1) {
     if(this.powersaving === true && this.temperature === 25 ) {
       throw new Error('The temp cannot be increased due to PS mode ON')
-    } else if(this.powersaving === false && this.temperature === 32 ) {
+    } else if(this.powersaving === false && this.temperature >= 32 ) {
       throw new Error('The temp cannot be increased more than 32 degrees while PS mode OFF')
     } else {
       this.temperature += num
@@ -16,7 +16,7 @@ class Thermostat{
   };
 
   decreaseTemp(num = 1) {
-    if (this.temperature === 10) {
+    if (this.temperature <= 10) {
       throw new Error('Minimum temp is 10')
   } else {
       this.temperature -= num
@@ -25,14 +25,14 @@ class Thermostat{
 
   powerSaveOff() {
     this.powersaving = false;
-    this.temperature = 32;
+    this.temperature <= 32;
   };
 
   powerSaveOn() {
     this.powersaving = true;
-    this.temperature = 25;
+    this.temperature <= 25;
   };
-  
+
   reset() {
     this.temperature = 20
     this.powersaving = true
