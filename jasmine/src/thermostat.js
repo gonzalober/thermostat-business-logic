@@ -23,15 +23,16 @@ class Thermostat{
     }
   };
 
-  powerSaving( tempSetting = 'on') {
-    if (tempSetting === 'on') {
-      this.powersaving = true
-    }
-    else if (tempSetting === 'off') {
-      this.powersaving = false
-    }
+  powerSaveOff() {
+    this.powersaving = false;
+    this.temperature = 32;
   };
 
+  powerSaveOn() {
+    this.powersaving = true;
+    this.temperature = 25;
+  };
+  
   reset() {
     this.temperature = 20
     this.powersaving = true

@@ -25,13 +25,13 @@ describe('Thermostat', function() {
 
   it('checks when power saving mode is on, the temp cannot be increased beyond 25 degrees', function(){
     thermostat.temperature = 25
-    thermostat.powerSaving('on')
+    thermostat.powerSaveOn()
     expect(function() {thermostat.increaseTemp()}).toThrowError('The temp cannot be increased due to PS mode ON')
   });
 
   it('checks when power saving mode is off, the temp can be increased up to 32 degrees', function(){
     thermostat.temperature = 32
-    thermostat.powerSaving('off')
+    thermostat.powerSaveOff()
     expect(function() {thermostat.increaseTemp()}).toThrowError('The temp cannot be increased more than 32 degrees while PS mode OFF')
   });
 
